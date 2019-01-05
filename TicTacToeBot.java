@@ -1,3 +1,5 @@
+//Players will be X's; Computers will be O's
+//To call the client class: use ObjectName.start()
 import java.util.Scanner;
 public class Board {
 String[ ][ ] board;
@@ -15,15 +17,17 @@ public Board() {
 		}
 	}
 }
+//Method to display the board to the user
 private void display() {
 	System.out.println("");
 	for (int r=0; r<board.length;r++) {
 		for(int c=0; c<board[1].length;c++) {
 			System.out.print(board[r][c]);
-		} System.out.print(" || ["+r+","+"0]"  +  "["+r+","+"1]" + "["+r+","+"2]");
+		} System.out.print(" || ["+r+","+"0]"  +  "["+r+","+"1]" + "["+r+","+"2]"); //This line shows the (x,y) pair of each spot
 		System.out.println();
 	}
 }
+//Loop that controls player vs computer turn
 public void start() {
 	while (!gameOver){
 		if (playersTurn) 
@@ -34,6 +38,7 @@ public void start() {
 	System.out.println("Total Player Moves: " + playerMoves);
 	display();
 }
+//Prompt's the user to make a move when playersTurn
 private void playerTurn() {
 display();
 System.out.println("Enter the X position of where you want to go");
@@ -45,6 +50,7 @@ if (yPos<0 || yPos>2) {System.out.println("Out of Bonds"); playerTurn();}//Make 
 if (board[xPos][yPos].equals("[ ]")) {makeMove(xPos,yPos,"[X]"); playerMoves++; playersTurn=false; checkGame(); return;}
 System.out.println("Try Again...There was already a piece here");
 }
+//Checks to see if one person has won
 private void checkGame() {
 	//Top Row
 	if (board[0][0].equals(board[0][1]) && board[0][1].equals(board[0][2]) && board[0][0].equals("[X]")) { gameOver=true; System.out.println("Player Wins"); return;} //Player wins
@@ -179,5 +185,4 @@ if((board[2][0].equals(board[0][2]))&&(board[2][0].equals("[X]"))&&(board[1][1].
 return false;
 }
 }
-//Players will be X's
-//Computers will be O's
+
