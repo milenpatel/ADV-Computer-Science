@@ -1,4 +1,4 @@
-//Players will be X's; Computers will be O's
+//Players will be X's; Computers will be O's !
 //To call the client class: use ObjectName.start()
 import java.util.Scanner;
 public class Board {
@@ -85,9 +85,11 @@ private void checkGame() {
 	gameOver=true;
 	System.out.println("Tie Game");
 }
+	
 private void makeMove(int xPos, int yPos, String toBeEntered) {
 if(board[xPos][yPos]=="[ ]") {board[xPos][yPos]=toBeEntered; if(toBeEntered.equals("[X]")) {lastX=xPos; lastY=yPos;}} 
 }
+	
 private void computerTurn() { 
 playersTurn = true;
 if (playerMoves==0) {makeMove(0,0,"[O]"); checkGame(); return;}
